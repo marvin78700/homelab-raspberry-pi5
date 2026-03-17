@@ -25,11 +25,13 @@ rm -rf $BACKUP_DIR/$BACKUP_NAME
 # Suppresion des vieux backups (une semaine)
 find $BACKUP_DIR -name "backup-config_*.tar.gz" -mtime +7 -delete
 
-# Attend 60 secondes avant de lancé SCP
-sleep 60
-
-# Sauvegarde à distance sur un PC Windows via scp
-scp $BACKUP_DIR/$BACKUP_NAME.tar.gz "USER@IP:CHEMIN"
+# Transfert de fichier via SCP
+for HOST in "IP sans VPN" "IP avec VPN"; do
+    if ssh -o ConnectTimeout=3 -o BatchMode=yes marvin@$HOST exit 2>/dev/null; then
+        scp $BACKUP_DIR/$BACKUP_NAME.tar.gz "USER@$HOST:chemin"
+        break
+    fi
+done
 
 # Message de confirmation
 echo "Backup terminé : $BACKUP_DIR/$BACKUP_NAME.tar.gz"
