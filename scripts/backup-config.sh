@@ -17,6 +17,9 @@ cp -r /etc/pihole $BACKUP_DIR/$BACKUP_NAME/
 cp -r /etc/wireguard $BACKUP_DIR/$BACKUP_NAME/
 cp -r /etc/fail2ban/jail.local $BACKUP_DIR/$BACKUP_NAME/
 cp -r /etc/ufw $BACKUP_DIR/$BACKUP_NAME/
+cp -r /etc/prometheus $BACKUP_DIR/$BACKUP_NAME/
+cp -r /etc/grafana $BACKUP_DIR/$BACKUP_NAME/
+cp /etc/systemd/system/node_exporter.service $BACKUP_DIR/$BACKUP_NAME/
 
 # Compression des fichiers de backups
 tar -czf $BACKUP_DIR/$BACKUP_NAME.tar.gz -C $BACKUP_DIR $BACKUP_NAME
