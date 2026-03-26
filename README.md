@@ -69,6 +69,7 @@ Si un service tombe, il est redémarré automatiquement et l'incident est enregi
 ## 📁 Scripts
 
 Les scripts bash sont disponibles dans le dossier [`scripts/`](./scripts)
+(Des modifications seront éffectuer a fûr et a mesure que d'autre outils seront ajouter.)
 
 ---
 
